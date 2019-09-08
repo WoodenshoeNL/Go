@@ -1,0 +1,5 @@
+FROM golang
+ADD api-time /go/src/github.com/WoodenshoeNL/go/go-api-time/api-time
+RUN go get github.com/gorilla/mux
+RUN go install github.com/WoodenshoeNL/go/go-api-time/api-time
+ENTRYPOINT /go/bin/api-time
