@@ -20,4 +20,5 @@ WORKDIR /app
 COPY --from=node-build-env /src /app/
 COPY --from=go-build-env /go /app/
 RUN chmod +x plural-web
-#ENTRYPOINT ./plural-web
+ENTRYPOINT ./plural-web
+EXPOSE 8000
