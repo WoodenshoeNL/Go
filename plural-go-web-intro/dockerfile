@@ -1,0 +1,17 @@
+
+
+# build stage go
+FROM golang:alpine AS go-build-env
+RUN apk --no-cache add build-base git bzr mercurial gcc
+ADD ./src /go
+RUN cd /go && go build -o plural-web
+
+
+
+# final stage
+FROM alpine
+WORKDIR /app
+COPY --from=go-build-env /go /app/
+RUN chmod +x plural-web
+ENTRYPOINT ./plural-web
+EXPOSE 8000
