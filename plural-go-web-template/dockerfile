@@ -4,7 +4,7 @@
 FROM golang:alpine AS go-build-env
 RUN apk --no-cache add build-base git bzr mercurial gcc
 ADD ./src /go
-RUN cd /go && go build -o plural-web
+RUN cd /go/src/github.com/lss/webapp && go build -o plural-web
 
 
 
