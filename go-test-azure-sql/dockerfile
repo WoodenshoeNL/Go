@@ -1,0 +1,18 @@
+
+
+# build stage go
+FROM golang:alpine AS go-build-env
+RUN apk --no-cache add build-base git bzr mercurial gcc
+ADD ./src /go/src
+RUN cd /go/src/ && go get github.com/denisenkom/go-mssqldb && go install github.com/denisenkom/go-mssqldb
+RUN cd /go/src/ && go build -o test-sql
+
+
+
+# final stage
+FROM alpine
+WORKDIR /app
+COPY --from=go-build-env /go/src /app/
+RUN chmod +x test-sql
+ENTRYPOINT ./test-sql
+
