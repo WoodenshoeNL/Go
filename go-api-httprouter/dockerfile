@@ -1,0 +1,14 @@
+
+# build stage
+FROM golang:alpine AS build-env
+RUN apk --no-cache add build-base git bzr mercurial gcc
+RUN go get github.com/julienschmidt/httprouter
+ADD ./src /go/src
+RUN cd /go/src && go build -o router
+
+# final stage
+FROM alpine
+WORKDIR /app
+COPY --from=build-env /go/src/router /app/
+ENTRYPOINT ./router
+EXPOSE 8000
