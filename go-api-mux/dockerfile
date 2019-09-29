@@ -1,0 +1,14 @@
+
+# build stage
+FROM golang:alpine AS build-env
+RUN apk --no-cache add build-base git bzr mercurial gcc
+RUN go get -u github.com/gorilla/mux
+ADD ./src /go/src
+RUN cd /go/src && go build -o gomux
+
+# final stage
+FROM alpine
+WORKDIR /app
+COPY --from=build-env /go/src/gomux /app/
+ENTRYPOINT ./gomux
+EXPOSE 8000
