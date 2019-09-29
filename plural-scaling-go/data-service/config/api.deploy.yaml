@@ -1,0 +1,21 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      containers:
+      - name: api-pod
+        image: woodregistry.azurecr.io/woodgo/gohello
+        ports:
+        - containerPort: 4000
+      imagePullSecrets:
+      - name: acr-auth
