@@ -22,7 +22,7 @@ az container create \
     --name $ContainerName \
     --image $ContainerImage \
     --dns-name-label $dnsLabel \
-    --ports 80 \
+    --ports 3000 \
     --registry-password $ACR_Secret \
     --registry-username $ACR_NAME
 
