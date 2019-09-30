@@ -1,20 +1,20 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: api
+  name: data-api
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: api
+      app: data-api
   template:
     metadata:
       labels:
-        app: api
+        app: data-api
     spec:
       containers:
-      - name: api-pod
-        image: woodregistry.azurecr.io/woodgo/gohello
+      - name: data-api-pod
+        image: woodregistry.azurecr.io/woodgo/goscaledata
         ports:
         - containerPort: 4000
       imagePullSecrets:

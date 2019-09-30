@@ -13,6 +13,6 @@ WORKDIR /app
 COPY --from=go-build-env /go/src/github.com/ps/web /app/
 RUN chmod +x web-service
 ADD ./web /app/web
-ENV DATA_SERVICE_URL http://172.18.0:4000
+ENV DATA_SERVICE_URL http://172.18.0.0
 ENTRYPOINT ./web-service
 EXPOSE 3000

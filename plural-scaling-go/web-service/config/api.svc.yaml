@@ -1,12 +1,12 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: api-svc
+  name: web-api-svc
 spec:
   type: LoadBalancer
   ports:
   - protocol: TCP
     port: 80
-    targetPort: 4000
+    targetPort: 3000
   selector:
-    app: api
+    app: web-api
