@@ -6,7 +6,7 @@ ResourceGroup="ACI"
 ContainerName="goscaleweb"
 ContainerImage="woodregistry.azurecr.io/woodgo/goscaleweb"
 
-dnsLabel="go-hello-wood"
+dnsLabel="go-scale-wood"
 
 ACR_ResourceGroup="WoodKube"
 ACR_NAME="woodregistry"
