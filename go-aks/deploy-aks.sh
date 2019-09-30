@@ -9,10 +9,10 @@ ContainerName="woodgo/gohello"
 
 #Create Go Image
 
-az acr build \
-    --registry $ACR_NAME . \
-    --resource-group $ResourceGroup \
-    --image $ContainerName
+#az acr build \
+#    --registry $ACR_NAME . \
+#    --resource-group $ResourceGroup \
+#    --image $ContainerName
 
 
 kubectl apply -f ./config/api.deploy.yaml
